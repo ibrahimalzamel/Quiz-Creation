@@ -18,9 +18,8 @@ namespace QuizCreation.DataAccess.Concrete
         public DbSet<Group> Groups { get; set; }
         public DbSet<QuestionAnswer> QuestionAnswers { get; set; }
         public DbSet<Student> Students { get; set; }
-        public QuizCreationDBContext(DbContextOptions options , IConfiguration configuration) : base(options)
+        public QuizCreationDBContext(DbContextOptions<QuizCreationDBContext> options) : base(options)
         {
-            Configuration = configuration;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

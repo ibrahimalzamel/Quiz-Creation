@@ -10,7 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddBusinessServices();
 builder.Services.AddDataAccessServices(builder.Configuration);
-builder.Configuration.GetSection("TokenOptions");
+builder.Services.AddDbContext<QuizCreationDBContext>();
+builder.Services.AddDbContext<QuizCreationDBContext>
+    (optionsAction => optionsAction.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

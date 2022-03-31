@@ -15,9 +15,8 @@ namespace QuizCreation.DataAccess
     {
         public static IServiceCollection AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<QuizCreationDBContext>(option => option.UseSqlServer
-                          (configuration.GetConnectionString("DefaultConnection")));
-
+           
+           
             services.AddScoped<IUserDal, EfUserRepository>();
             services.AddScoped<IExamDal, EfExamRepository>();
             services.AddScoped<IExamResultDal, EfExamResultRepository>();
