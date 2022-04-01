@@ -9,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddBusinessServices();
-builder.Services.AddDataAccessServices(builder.Configuration);
-builder.Services.AddDbContext<QuizCreationDBContext>();
+builder.Services.AddDataAccessServices();
+//builder.Services.AddDbContext<QuizCreationDBContext>();
 builder.Services.AddDbContext<QuizCreationDBContext>
     (optionsAction => optionsAction.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();
@@ -32,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=users}/{action=Index}/{id?}");
 
 app.Run();

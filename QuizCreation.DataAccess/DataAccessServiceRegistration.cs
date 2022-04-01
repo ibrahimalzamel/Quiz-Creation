@@ -13,7 +13,7 @@ namespace QuizCreation.DataAccess
 {
     public static class DataAccessServiceRegistration
     {
-        public static IServiceCollection AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddDataAccessServices(this IServiceCollection services)
         {
            
            

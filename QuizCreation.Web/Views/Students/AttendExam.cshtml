@@ -1,0 +1,40 @@
+﻿@model QuizCreation.Entities.ViewModel.AttuendExamViewModel
+
+@{
+    ViewData["Title"] = "AttendExam";
+}
+
+<h1>@Model.ExamName</h1>
+
+<h3>Exam Paper</h3>
+
+@if(Model.Message=="")
+{
+<form asp-action="AttendExam" asp-controller="Students" method="post">
+    <input type="hidden" asp-for="StudentId" />
+    <ul>
+        @for(var i=0;i<Model.questionAnswerViewModels.Count();i++)
+            {
+                <input type="hidden" asp-for="@Model.questionAnswerViewModels[i].Id"/>
+                <input type="hidden" asp-for="@Model.questionAnswerViewModels[i].ExamId"/>
+                <li>
+                    <label for="@Model.questionAnswerViewModels[i].Question">@Model.questionAnswerViewModels[i].Question</label>
+                </li>
+                <li>
+                    <select asp-for="@Model.questionAnswerViewModels[i].SelectedAnswer" class="form-control">
+                        <option value="1">@Model.questionAnswerViewModels[i].Option1</option>
+                        <option value="2">@Model.questionAnswerViewModels[i].Option2</option>
+                        <option value="3">@Model.questionAnswerViewModels[i].Option3</option>
+                        <option value="4">@Model.questionAnswerViewModels[i].Option4</option>
+                    </select>
+                </li>
+            }
+    </ul>
+    <button type="submit" name="action">Submit</button>
+</form>
+}
+else
+{
+    <p style="font-size : 30px; color:red ; text-align:center;">@Model.Message</p>
+}
+
